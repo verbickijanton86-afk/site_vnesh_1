@@ -2216,26 +2216,14 @@ body {
 }
 .holder-caption {
   position: absolute;
-  bottom: 20px;
+  bottom: 21px;
   left: 25px;
   right: 25px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
   pointer-events: none;
-}
-.holder-requirement {
-  display: block;
-  max-width: 100%;
-  color: #f1f0ec;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(15px, 1.7vw, 21px);
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: -0.35px;
-  line-height: 1.2;
-  text-shadow: 0 2px 18px #000;
 }
 .holder-caption > span {
   font-size: 7px;

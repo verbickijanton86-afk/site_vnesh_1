@@ -149,7 +149,6 @@ function join() {
       <p class="modal-copy">Юзернейм: <strong>${escapeHtml(profile.username || "не указан")}</strong></p>
       <p class="modal-copy">Соцсети: <strong>${escapeHtml(profile.socials || "не указаны")}</strong></p>
       <p class="modal-copy">Выбранный канал: <strong>${escapeHtml(profile.channel)}</strong></p>
-      <p class="modal-copy">Источник знакомства: <strong>${escapeHtml(profile.source || "не указан")}</strong></p>
       <p class="modal-copy">Это профиль на сайте AUVIX, не регистрация в банке.</p>
       <button class="button green" id="go-catalog">Выбрать предложение <span>↗</span></button>
       <br /><button class="modal-secondary" id="reset-profile">Изменить анкету</button>
@@ -181,18 +180,6 @@ function join() {
         <select id="partner-channel" name="channel">
           <option>Друзьям и знакомым</option><option>В Telegram-канале</option><option>В блоге или соцсетях</option><option>На своём сайте</option><option>В команде или агентстве</option>
         </select>
-        <label for="partner-source">Откуда ты узнал(а) об AUVIX?</label>
-        <select id="partner-source" name="source" required>
-          <option value="" selected disabled>Выбери источник</option>
-          <option value="Социальные сети">Социальные сети (TikTok, Instagram и др.)</option>
-          <option value="Telegram-канал">Telegram-канал</option>
-          <option value="Telegram-чаты">Telegram-чаты</option>
-          <option value="Друзья или знакомые">Друзья или знакомые</option>
-          <option value="YouTube">YouTube</option>
-          <option value="Поиск в интернете">Поиск в интернете</option>
-          <option value="Реклама">Реклама</option>
-          <option value="Другое">Другое</option>
-        </select>
         <label class="consent-row"><input type="checkbox" id="partner-consent" required /> Я согласен(на) на отправку этих данных владельцу сайта для рассмотрения заявки.</label>
         <button class="button green" type="submit" id="submit-application">Отправить анкету <span>↗</span></button>
       </div>
@@ -218,26 +205,22 @@ function join() {
     const username = $("#partner-username").value.trim();
     const socials = $("#partner-socials").value.trim();
     const channel = $("#partner-channel").value;
-    const source = $("#partner-source").value;
     const status = $("#storage-error");
-    const email = String(window.AUVIX_APPLICATION_EMAIL || "").trim();
-    if (!name || !username || !socials || !source) { status.textContent = "Заполни все обязательные поля."; return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      status.textContent = "Анкета готова, но отправка ещё не настроена: владелец сайта должен указать почту в config.js.";
-      return;
-    }
+    if (!name || !username || !socials) { status.textContent = "Заполни все обязательные поля."; return; }
     const submit = $("#submit-application");
     submit.disabled = true; submit.querySelector("span").textContent = "…";
     status.textContent = "Отправляем анкету…";
-    const payload = { _subject: "Новая анкета AUVIX", _template: "table", _captcha: "true", age: "18+", name, username, socials, channel, source, consent: "Да", submittedAt: new Date().toLocaleString("ru-RU") };
+    // Анкета уходит на /api/application (файл worker.js), а он пересылает её в Telegram.
+    const payload = { name, username, socials, channel, ageConfirmed: true, consent: true };
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(email)}`, {
-        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload)
+      const response = await fetch("/api/application", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
       });
-      const result = await response.json();
-      if (!response.ok || result.success === "false" || result.success === false) throw new Error(result.message || "Не удалось отправить заявку");
-      try { localStorage.setItem("flow-demo-profile", JSON.stringify({ name, username, socials, channel, source, ageConfirmed: true })); } catch {}
-      status.textContent = "Анкета отправлена! Если это первая отправка, проверьте почту получателя и подтвердите адрес в FormSubmit.";
+      let result = {};
+      try { result = await response.json(); } catch {}
+      if (!response.ok || !result.ok) throw new Error(result.error || "send_failed");
+      try { localStorage.setItem("flow-demo-profile", JSON.stringify({ name, username, socials, channel, ageConfirmed: true })); } catch {}
+      status.textContent = "Анкета отправлена! Мы свяжемся с тобой.";
       submit.hidden = true;
     } catch (error) {
       status.textContent = "Не удалось отправить анкету. Проверь подключение к интернету и попробуй позже.";
