@@ -1,7 +1,7 @@
 // EMAIL ДЛЯ ЗАЯВОК: впишите адрес получателя между кавычками.
 // Отправка использует FormSubmit AJAX; при первом запуске сервис попросит
 // подтвердить адрес письмом. Пароль от почты на сайт не добавляется.
-window.AUVIX_APPLICATION_EMAIL = "verbickijanton86@gmail.com";
+window.AUVIX_APPLICATION_EMAIL = "Korytkoanton99@gmail.com";
 
 /**
  * КАТАЛОГ БАНКОВ — данные для карточек сайта.
