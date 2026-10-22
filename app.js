@@ -232,12 +232,18 @@ function join() {
       });
       let result = {};
       try { result = await response.json(); } catch {}
-      if (!response.ok || !result.ok) throw new Error(result.error || "send_failed");
+      if (!response.ok || !result.ok) { const err = new Error(result.error || "send_failed"); err.info = result; throw err; }
       try { localStorage.setItem("flow-demo-profile", JSON.stringify({ name, username, socials, channel, source, ageConfirmed: true })); } catch {}
       status.textContent = "Анкета отправлена! Мы свяжемся с тобой.";
       submit.hidden = true;
     } catch (error) {
-      status.textContent = "Не удалось отправить анкету. Проверь подключение к интернету и попробуй позже.";
+      const info = error.info || {};
+      const reasons = {
+        not_configured: "Сайт ещё не настроен: владелец не добавил токен и ID Telegram в Cloudflare.",
+        origin: "Анкету нельзя отправить с этого адреса сайта.",
+        telegram: "Telegram не принял сообщение" + (info.detail ? " (" + info.detail + ")" : "") + ". Владельцу сайта нужно проверить токен бота и ID получателя и нажать Start в боте.",
+      };
+      status.textContent = reasons[error.message] || "Не удалось отправить анкету. Проверь подключение к интернету и попробуй позже.";
       submit.disabled = false; submit.querySelector("span").textContent = "↗";
     }
   };

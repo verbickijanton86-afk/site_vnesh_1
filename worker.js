@@ -66,14 +66,23 @@ async function handleApplication(request, env) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ chat_id, text, disable_web_page_preview: true }),
         });
-        return r.ok;
+        if (r.ok) return { ok: true };
+        let description = "";
+        try {
+          description = String((await r.json()).description || "");
+        } catch {}
+        return { ok: false, status: r.status, description };
       } catch {
-        return false;
+        return { ok: false, status: 0, description: "network" };
       }
     }),
   );
 
-  if (!results.some(Boolean)) return json({ ok: false, error: "telegram" }, 502);
+  if (!results.some((x) => x.ok)) {
+    const first = results[0] || {};
+    // Описание ошибки Telegram не содержит токена, его можно показать.
+    return json({ ok: false, error: "telegram", status: first.status, detail: first.description }, 502);
+  }
   return json({ ok: true });
 }
 
