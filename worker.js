@@ -2,7 +2,7 @@
 // Токен бота и ID получателя хранятся в секретах Cloudflare (TELEGRAM_BOT_TOKEN,
 // TELEGRAM_CHAT_ID) и в код сайта не попадают. Остальные запросы отдают файлы сайта.
 
-const MAX = { name: 50, username: 64, socials: 1000, channel: 100 };
+const MAX = { name: 50, username: 64, socials: 1000, channel: 100, source: 100 };
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -39,6 +39,7 @@ async function handleApplication(request, env) {
   const username = clean(body.username, MAX.username);
   const socials = clean(body.socials, MAX.socials);
   const channel = clean(body.channel, MAX.channel);
+  const source = clean(body.source, MAX.source);
   if (!name || !username || !socials) return json({ ok: false, error: "empty" }, 400);
 
   const time = new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" });
@@ -49,6 +50,7 @@ async function handleApplication(request, env) {
     `Юзернейм: ${username}`,
     `Соцсети: ${socials}`,
     `Где рекомендует: ${channel || "не указано"}`,
+    `Откуда узнал(а) об AUVIX: ${source || "не указано"}`,
     "Возраст: 18+ (подтверждено)",
     "Согласие на передачу данных: да",
     `Время (МСК): ${time}`,
