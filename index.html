@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ru">
+  <!-- НАСТРОЙКИ ВКЛАДКИ: title — название, description — описание сайта. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050505" />
+    <meta
+      name="description"
+      content="auvix — платформа банковских партнёрских программ. Выбирайте предложения, делитесь рекомендациями и рассчитывайте потенциальный доход."
+    />
+    <title>AUVIX</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body class="is-loading">
+    <div class="site-intro" id="site-intro" aria-label="AUVIX — загрузка сайта">
+      <div class="intro-mark">AUVIX</div>
+      <span class="intro-line"></span>
+      <p>БОЛЬШЕ, ЧЕМ ФИНАНСЫ</p>
+    </div>
+    <!-- ШАПКА: логотип, меню и кнопка входа. -->
+    <header class="header wrap">
+      <a class="brand" href="#" aria-label="AUVIX — главная">
+        <img
+          src="assets/auvix-wordmark.svg"
+          alt="AUVIX"
+          width="122"
+          height="26"
+        />
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#" class="current">Главная</a>
+        <a href="#offers">Продукты</a>
+        <a href="#how">Возможности</a>
+        <a href="#faq">Сообщество</a>
+      </nav>
+      <button class="header-login" data-join>
+        Вход
+        <span>↗</span>
+      </button>
+      <button
+        class="menu-button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <main>
+      <!-- ГЛАВНЫЙ ЭКРАН: название, подзаголовок и коллекция. -->
+      <section class="luxury-hero" aria-labelledby="hero-title">
+        <div class="hero-top wrap">
+          <p class="hero-overline">ФИНАНСЫ. СВЯЗИ. НОВЫЙ УРОВЕНЬ.</p>
+          <h1 id="hero-title">
+            <img
+              src="assets/auvix-wordmark.svg"
+              alt="AUVIX"
+              width="620"
+              height="100"
+            />
+          </h1>
+          <p class="hero-subtitle">БОЛЬШЕ, ЧЕМ ФИНАНСЫ</p>
+        </div>
+        <div class="hero-side hero-side-left">
+          <span class="fine-line"></span>
+          <p>
+            ДЛЯ ТЕХ,
+            <br />
+            КТО ВЫБИРАЕТ БОЛЬШЕ.
+            <br />
+            И ДВИЖЕТСЯ ВПЕРЁД.
+          </p>
+        </div>
+        <a href="#offers" class="hero-side hero-side-right">
+          НАЧАТЬ
+          <span>⟶</span>
+        </a>
+        <div class="ribbon ribbon-one" aria-hidden="true"></div>
+        <div class="ribbon ribbon-two" aria-hidden="true"></div>
+        <div class="collection-heading">
+          <span>КОЛЛЕКЦИЯ AUVIX</span>
+          <h2>Стиль в деталях.</h2>
+          <p>Три характера. Один стандарт.</p>
+        </div>
+        <!-- КАРТХОЛДЕРЫ: три карточки коллекции. -->
+        <div
+          class="holder-stage"
+          role="region"
+          aria-roledescription="карусель"
+          aria-label="Коллекция картхолдеров"
+          tabindex="0"
+        >
+          <button
+            class="holder-card"
+            data-holder="0"
+            aria-label="Выбрать картхолдер INITIATE"
+          >
+            <span class="folder-tab">
+              INITIATE
+              <span>01 ↗</span>
+            </span>
+            <span class="holder-card-top">
+              <strong>Первый шаг.</strong>
+              <span>01</span>
+            </span>
+            <span
+              class="holder-product product-initiate"
+              role="img"
+              aria-label="Серебристый металлический картхолдер AUVIX INITIATE"
+            ></span>
+            <span class="holder-caption">
+              <span>ТВОЙ ВКЛАД ЗАМЕЧЕН</span>
+              <strong>INITIATE</strong>
+              <em class="holder-requirement">20 приглашённых участников</em>
+            </span>
+          </button>
+          <button
+            class="holder-card is-active"
+            data-holder="1"
+            aria-label="Выбрать картхолдер PARTNER"
+          >
+            <span class="folder-tab">
+              PARTNER
+              <span>02 ↗</span>
+            </span>
+            <span class="holder-card-top">
+              <strong>Вместе дальше.</strong>
+              <span>02</span>
+            </span>
+            <span
+              class="holder-product product-partner"
+              role="img"
+              aria-label="Чёрный кожаный картхолдер AUVIX PARTNER"
+            ></span>
+            <span class="holder-caption">
+              <span>ТЫ — ЧАСТЬ КОМАНДЫ</span>
+              <strong>PARTNER</strong>
+              <em class="holder-requirement">50 приглашённых участников</em>
+            </span>
+          </button>
+          <button
+            class="holder-card"
+            data-holder="2"
+            aria-label="Выбрать картхолдер APEX"
+          >
+            <span class="folder-tab">
+              APEX
+              <span>03 ↗</span>
+            </span>
+            <span class="holder-card-top">
+              <strong>Вершина.</strong>
+              <span>03</span>
+            </span>
+            <span
+              class="holder-product product-apex"
+              role="img"
+              aria-label="Чёрный мраморный картхолдер AUVIX APEX"
+            ></span>
+            <span class="holder-caption">
+              <span>ТЫ — ПРИМЕР</span>
+              <strong>APEX</strong>
+              <em class="holder-requirement">100 приглашённых участников</em>
+            </span>
+          </button>
+        </div>
+        <div class="collection-controls wrap">
+          <button
+            class="collection-arrow"
+            id="holder-prev"
+            aria-label="Предыдущий картхолдер"
+          >
+            ←
+          </button>
+          <div class="collection-pagination">
+            <span id="holder-counter" aria-live="polite">02 / 03</span>
+            <div class="collection-dots">
+              <button data-slide="0" aria-label="INITIATE"></button>
+              <button
+                data-slide="1"
+                class="active"
+                aria-label="PARTNER"
+                aria-pressed="true"
+              ></button>
+              <button data-slide="2" aria-label="APEX"></button>
+            </div>
+          </div>
+          <button
+            class="collection-arrow"
+            id="holder-next"
+            aria-label="Следующий картхолдер"
+          >
+            →
+          </button>
+        </div>
+        <div class="hero-bottom wrap">
+          <span>YOUR CAPITAL. YOUR LEVEL.</span>
+          <a href="#offers">
+            ОТКРЫТЬ ВОЗМОЖНОСТИ
+            <span>↓</span>
+          </a>
+          <span>
+            ТЫ УЖЕ БЛИЖЕ,
+            <br />
+            ЧЕМ ДУМАЕШЬ.
+          </span>
+        </div>
+      </section>
+      <!-- ПРЕИМУЩЕСТВА: четыре ссылки под коллекцией. -->
+      <section class="luxury-benefits wrap" aria-label="Возможности AUVIX">
+        <a href="#offers">
+          <span class="benefit-number">01</span>
+          <span class="benefit-icon">◉</span>
+          <h3>Банковские продукты</h3>
+          <p>
+            Знакомые банки.
+            <br />
+            Новые возможности.
+          </p>
+        </a>
+        <a href="#how">
+          <span class="benefit-number">02</span>
+          <span class="benefit-icon">↗</span>
+          <h3>Рекомендации</h3>
+          <p>
+            Делись пользой.
+            <br />
+            Создавай новые связи.
+          </p>
+        </a>
+        <a href="#calculator">
+          <span class="benefit-number">03</span>
+          <span class="benefit-icon">◇</span>
+          <h3>Твой потенциал</h3>
+          <p>
+            Посчитай результат
+            <br />
+            своих рекомендаций.
+          </p>
+        </a>
+        <a href="#faq">
+          <span class="benefit-number">04</span>
+          <span class="benefit-icon">♧</span>
+          <h3>Сообщество</h3>
+          <p>
+            Для тех, кто мыслит
+            <br />
+            на шаг вперёд.
+          </p>
+        </a>
+      </section>
+      <!-- НАЗВАНИЯ БАНКОВ. -->
+      <section class="banks-strip wrap" aria-label="Банки в каталоге">
+        <div class="strip-caption">
+          ЗНАКОМЫЕ БАНКИ.
+          <br />
+          <span>НОВЫЕ ВОЗМОЖНОСТИ.</span>
+        </div>
+        <div class="bank-word vtb">
+          <span class="vtb-lines">▰</span>
+          ВТБ
+        </div>
+        <div class="bank-word">
+          <span class="t-mini">Т</span>
+          Т-Банк
+        </div>
+        <div class="bank-word sber">
+          <span>◉</span>
+          Сбер
+        </div>
+        <div class="bank-word alfa">
+          <span>А̲</span>
+          Альфа-Банк
+        </div>
+        <a class="more-banks" href="#offers">
+          И другие
+          <span>↗</span>
+        </a>
+      </section>
+      <!-- КАТАЛОГ: фильтры и поиск. Предложения меняйте в config.js. -->
+      <section class="offers section wrap" id="offers">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow muted">01 / КАТАЛОГ ВОЗМОЖНОСТЕЙ</div>
+            <h2>
+              Выбирай своё.
+              <span class="green-text">Рекомендуй.</span>
+            </h2>
+          </div>
+          <p>
+            Один каталог — разные банки.
+            <br />
+            Найди предложение для своей аудитории.
+          </p>
+        </div>
+        <div class="catalog-toolbar">
+          <div class="filters" role="group" aria-label="Категория предложения">
+            <button class="filter active" data-filter="all" aria-pressed="true">
+              Все предложения
+              <span>6</span>
+            </button>
+            <button class="filter" data-filter="cards" aria-pressed="false">
+              Карты
+            </button>
+            <button class="filter" data-filter="business" aria-pressed="false">
+              Для бизнеса
+            </button>
+          </div>
+          <label class="search">
+            <span>⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Найти банк"
+              aria-label="Найти банк"
+            />
+          </label>
+        </div>
+        <p class="catalog-note">
+          Демонстрационный каталог. Доступность продуктов и вознаграждение
+          уточняются при подключении программы.
+        </p>
+        <div class="offer-grid" id="offer-grid"></div>
+        <p id="empty-state" hidden>
+          Такого банка пока нет в каталоге. Попробуйте другое название.
+        </p>
+      </section>
+      <!-- КАК ЭТО РАБОТАЕТ: три шага. -->
+      <section class="how section wrap" id="how">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow muted">02 / ВСЁ НАЧИНАЕТСЯ С РЕКОМЕНДАЦИИ</div>
+            <h2>
+              От «советую»
+              <br />
+              до
+              <span class="green-text">результата.</span>
+            </h2>
+          </div>
+          <p>
+            Понятный путь без лишних шагов.
+            <br />
+            Ты делишься — банк обрабатывает заявку.
+          </p>
+        </div>
+        <div class="steps">
+          <article>
+            <span class="step-number">01</span>
+            <span class="step-icon">↗</span>
+            <h3>Выбери предложение</h3>
+            <p>
+              Найди подходящий продукт и изучи условия партнёрской программы
+              банка.
+            </p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <span class="step-icon">↗</span>
+            <h3>Поделись ссылкой</h3>
+            <p>
+              После подключения размести свою реферальную ссылку в блоге, канале
+              или переписке.
+            </p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <span class="step-icon">✓</span>
+            <h3>Получи вознаграждение</h3>
+            <p>
+              Когда приглашённый выполнит условия программы, банк начислит
+              выплату по её правилам.
+            </p>
+          </article>
+        </div>
+      </section>
+      <!-- КАЛЬКУЛЯТОР: подписи и значения полей. Формула в app.js. -->
+      <section class="calculator section wrap" id="calculator">
+        <div class="calc-copy">
+          <div class="eyebrow">03 / ПОСЧИТАЕМ ВОЗМОЖНОСТИ</div>
+          <h2>
+            Твой круг общения.
+            <br />
+            Твой
+            <span>потенциал.</span>
+          </h2>
+          <p>
+            Попробуй разные значения и оцени,
+            <br />
+            как рекомендации могут стать доходом.
+          </p>
+          <span class="calc-sticker">
+            польза × рекомендации = возможности ↗
+          </span>
+        </div>
+        <div class="calc-panel">
+          <div class="range-title">
+            <label for="referrals">Количество приведенных клиентов</label>
+            <output id="count-output" for="referrals">10</output>
+          </div>
+          <input type="range" min="1" max="20" value="10" id="referrals" />
+          <div class="range-limits">
+            <span>1 рекомендация</span>
+            <span>20 рекомендаций</span>
+          </div>
+          <label class="reward-label" for="reward">
+            Вознаграждение за одну рекомендацию
+          </label>
+          <div class="reward-input is-fixed">
+            <output id="reward">25 000</output>
+            <span>₽</span>
+          </div>
+          <div class="calc-result">
+            <span>Примерный доход в месяц</span>
+            <strong id="income" aria-live="polite">
+              250 000
+              <small>₽</small>
+            </strong>
+          </div>
+          <p class="calc-disclaimer">
+            Учебный расчёт, не прогноз и не обещание дохода. Сумма за
+            рекомендацию задана для примера. Фактические выплаты зависят от
+            условий банка.
+          </p>
+        </div>
+      </section>
+      <!-- ВОПРОСЫ: каждый details — отдельный вопрос с ответом. -->
+      <section class="faq section wrap" id="faq">
+        <div>
+          <div class="eyebrow muted">04 / БЕЗ НЕДОСКАЗАННОСТИ</div>
+          <h2>
+            Хорошие
+            <br />
+            <span class="green-text">вопросы.</span>
+          </h2>
+          <p>Всё, что нужно знать перед стартом.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>
+              Нужен ли опыт в финансах?
+              <span>+</span>
+            </summary>
+            <p>
+              Для рекомендаций знакомым специальный опыт обычно не нужен. Изучи
+              продукт и правила конкретной программы. Не обещай одобрение или
+              условия, которых банк не подтверждал.
+            </p>
+          </details>
+          <details>
+            <summary>
+              С какими банками можно работать?
+              <span>+</span>
+            </summary>
+            <p>
+              В макете представлены ВТБ, Т-Банк, Сбер, Альфа-Банк,  Промсвязь и
+              Уралсиб. Подключение каждой программы и её доступность
+              проверяются отдельно. Наличие банка в каталоге не означает
+              заключённого партнёрства.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Когда приходит вознаграждение?
+              <span>+</span>
+            </summary>
+            <p>
+              Сроки и способ выплаты определяет банк. Обычно требуется
+              выполнение условий приглашённым клиентом и проверка результата.
+              Точные условия нужно смотреть в выбранной программе.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Где получить реферальную ссылку?
+              <span>+</span>
+            </summary>
+            <p>
+              В личном кабинете соответствующей программы банка после её
+              подключения. В текущей версии auvix ссылки можно добавить в
+              конфигурацию сайта. Автоматического подключения к банкам пока нет.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Можно ли начать без своего блога?
+              <span>+</span>
+            </summary>
+            <p>
+              Да, если правила выбранной программы позволяют личные
+              рекомендации. Для размещения рекламы и работы с трафиком нужно
+              отдельно проверить требования банка.
+            </p>
+          </details>
+        </div>
+      </section>
+      <!-- ПРИЗЫВ К ДЕЙСТВИЮ: заключительный блок. -->
+      <section class="final-cta wrap">
+        <div class="cta-symbol">↗</div>
+        <div>
+          <div class="eyebrow">
+            ТВОЯ СЛЕДУЮЩАЯ ВОЗМОЖНОСТЬ — БЛИЖЕ, ЧЕМ КАЖЕТСЯ
+          </div>
+          <h2>
+            Давай на связи.
+            <br />
+            Давай
+            <span>в auvix.</span>
+          </h2>
+        </div>
+        <button class="button dark" data-join>
+          Начать сейчас
+          <span>↗</span>
+        </button>
+      </section>
+    </main>
+    <!-- ПОДВАЛ: ссылки, авторские права и пояснения. -->
+    <footer class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="#">
+          <img
+            src="assets/auvix-wordmark.svg"
+            alt="AUVIX"
+            width="122"
+            height="26"
+          />
+        </a>
+        <p>
+          Объединяем рекомендации
+          <br />
+          и возможности.
+        </p>
+        <a href="#offers">Предложения ↗</a>
+        <a href="#faq">Вопросы и ответы ↗</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 auvix. Концепция партнёрской платформы.</span>
+        <span>Сделано для тех, кто видит возможности.</span>
+      </div>
+      <p class="legal">
+        Демонстрационная версия. auvix не является банком. Названия банков
+        принадлежат их правообладателям и приведены для иллюстрации каталога.
+        
+      </p>
+    </footer>
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: тексты формы и кабинета находятся в app.js. -->
+    <dialog id="modal">
+      <button class="close-modal" aria-label="Закрыть окно">×</button>
+      <div id="modal-content"></div>
+    </dialog>
+    <div class="toast" role="status" id="toast"></div>
+  </body>
+</html>
